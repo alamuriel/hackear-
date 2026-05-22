@@ -298,7 +298,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 0;
+      padding: 68px 0 0;
       overflow: hidden;
     }
 
@@ -1665,15 +1665,25 @@
     }
 
     @media (max-width: 480px) {
-      .hero-cta { flex-direction: column; }
+      .hero-cta { flex-direction: column; align-items: stretch; }
       .hero-cta .btn { width: 100%; justify-content: center; }
       .hero-values { flex-wrap: wrap; gap: 10px; }
+      .hero-content { padding: 20px 0 40px; }
 
       .products-grid { grid-template-columns: 1fr; }
 
       .galeria-grid { grid-template-columns: 1fr; }
       .galeria-item:nth-child(1) { grid-column: span 1; }
       .galeria-item:nth-child(4) { grid-column: span 1; }
+
+      section { padding: 60px 0; }
+      .container { padding: 0 16px; }
+    }
+
+    /* Ensure nothing clips horizontally on very small screens */
+    @media (max-width: 360px) {
+      .hero-title { font-size: 2.6rem; }
+      .nav-logo-main { font-size: 1.1rem; }
     }
 
     /* =============================================
@@ -1681,17 +1691,20 @@
     ============================================= */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
     .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-2 { transition-delay: 0.18s; }
+    .reveal-delay-3 { transition-delay: 0.26s; }
+    .reveal-delay-4 { transition-delay: 0.34s; }
+
+    /* Ensure hero is never invisible if JS observer is slow */
+    #inicio .reveal { transition-delay: 0s !important; }
   </style>
 </head>
 <body>
@@ -2616,6 +2629,27 @@
   // ================================================
   // SCROLL REVEAL
   // ================================================
+  const revealEls = document.querySelectorAll('.reveal');
+
+  function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
+  }
+
+  // Immediately show elements already in viewport (critical for hero on mobile)
+  function checkReveal() {
+    revealEls.forEach(el => {
+      if (isInViewport(el)) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  // Run immediately and after a short delay to catch any render timing issues
+  checkReveal();
+  setTimeout(checkReveal, 100);
+  setTimeout(checkReveal, 300);
+
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -2623,9 +2657,11 @@
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  revealEls.forEach(el => {
+    if (!el.classList.contains('visible')) revealObserver.observe(el);
+  });
 
   // ================================================
   // INITIALIZE
