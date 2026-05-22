@@ -537,6 +537,17 @@
       position: relative;
       overflow: hidden;
     }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-img img {
+      transform: scale(1.06);
+    }
 
     /* Decorative placeholder for product images */
     .product-img-inner {
@@ -917,6 +928,18 @@
 
     .galeria-item:nth-child(1) { grid-row: span 2; }
     .galeria-item:nth-child(4) { grid-column: span 2; }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .galeria-item:nth-child(1) img { min-height: 424px; }
+    .galeria-item:hover img { transform: scale(1.04); }
 
     .galeria-placeholder {
       width: 100%;
@@ -1847,10 +1870,7 @@
       <!-- Product 1 -->
       <div class="product-card reveal">
         <div class="product-img">
-          <div class="product-img-inner">
-            <div class="product-img-icon"><i class="fa-solid fa-khanda"></i></div>
-            <div class="blade-shape"></div>
-          </div>
+          <img src="foto-clasica.jpg" alt="Navaja Clásica" loading="lazy" />
         </div>
         <div class="product-body">
           <div class="product-name">Navaja Clásica</div>
@@ -1868,10 +1888,7 @@
       <div class="product-card reveal reveal-delay-1">
         <div class="product-badge">Popular</div>
         <div class="product-img">
-          <div class="product-img-inner">
-            <div class="product-img-icon"><i class="fa-solid fa-khanda"></i></div>
-            <div class="blade-shape"></div>
-          </div>
+          <img src="foto-premium.jpg" alt="Navaja Premium" loading="lazy" />
         </div>
         <div class="product-body">
           <div class="product-name">Navaja Premium</div>
@@ -1889,10 +1906,7 @@
       <div class="product-card reveal reveal-delay-2">
         <div class="product-badge">Pro</div>
         <div class="product-img">
-          <div class="product-img-inner">
-            <div class="product-img-icon"><i class="fa-solid fa-khanda"></i></div>
-            <div class="blade-shape"></div>
-          </div>
+          <img src="foto-competencia.jpg" alt="Navaja de Competencia" loading="lazy" />
         </div>
         <div class="product-body">
           <div class="product-name">Navaja de Competencia</div>
@@ -1910,10 +1924,7 @@
       <div class="product-card reveal reveal-delay-3">
         <div class="product-badge">Exclusiva</div>
         <div class="product-img">
-          <div class="product-img-inner">
-            <div class="product-img-icon"><i class="fa-solid fa-khanda"></i></div>
-            <div class="blade-shape"></div>
-          </div>
+          <img src="foto-artesanal.jpg" alt="Navaja Artesanal Especial" loading="lazy" />
         </div>
         <div class="product-body">
           <div class="product-name">Navaja Artesanal Especial</div>
@@ -2077,50 +2088,32 @@
     <div class="galeria-grid reveal">
 
       <div class="galeria-item">
-        <div class="galeria-placeholder">
-          <span class="galeria-placeholder-icon"><i class="fa-solid fa-khanda"></i></span>
-          <span class="galeria-placeholder-text">Navaja Clásica</span>
-        </div>
+        <img src="foto-galeria1.jpg" alt="Navaja Clásica" loading="lazy" />
         <div class="galeria-overlay"><i class="fa-solid fa-expand"></i></div>
       </div>
 
       <div class="galeria-item">
-        <div class="galeria-placeholder">
-          <span class="galeria-placeholder-icon"><i class="fa-solid fa-fire-flame-curved"></i></span>
-          <span class="galeria-placeholder-text">Proceso de Forja</span>
-        </div>
+        <img src="foto-galeria2.jpg" alt="Proceso de Forja" loading="lazy" />
         <div class="galeria-overlay"><i class="fa-solid fa-expand"></i></div>
       </div>
 
       <div class="galeria-item">
-        <div class="galeria-placeholder">
-          <span class="galeria-placeholder-icon"><i class="fa-solid fa-box"></i></span>
-          <span class="galeria-placeholder-text">Caja Artesanal</span>
-        </div>
+        <img src="foto-galeria3.jpg" alt="Caja Artesanal" loading="lazy" />
         <div class="galeria-overlay"><i class="fa-solid fa-expand"></i></div>
       </div>
 
       <div class="galeria-item">
-        <div class="galeria-placeholder">
-          <span class="galeria-placeholder-icon"><i class="fa-solid fa-star"></i></span>
-          <span class="galeria-placeholder-text">Colección Premium</span>
-        </div>
+        <img src="foto-galeria4.jpg" alt="Colección Premium" loading="lazy" />
         <div class="galeria-overlay"><i class="fa-solid fa-expand"></i></div>
       </div>
 
       <div class="galeria-item">
-        <div class="galeria-placeholder">
-          <span class="galeria-placeholder-icon"><i class="fa-solid fa-scissors"></i></span>
-          <span class="galeria-placeholder-text">Proceso de Afilado</span>
-        </div>
+        <img src="foto-galeria5.jpg" alt="Proceso de Afilado" loading="lazy" />
         <div class="galeria-overlay"><i class="fa-solid fa-expand"></i></div>
       </div>
 
       <div class="galeria-item">
-        <div class="galeria-placeholder">
-          <span class="galeria-placeholder-icon"><i class="fa-solid fa-award"></i></span>
-          <span class="galeria-placeholder-text">Acabado Final</span>
-        </div>
+        <img src="foto-galeria6.jpg" alt="Acabado Final" loading="lazy" />
         <div class="galeria-overlay"><i class="fa-solid fa-expand"></i></div>
       </div>
 
@@ -2224,7 +2217,7 @@
         </p>
 
         <a
-          href="https://wa.me/1234567890?text=Hola!%20Me%20interesa%20información%20sobre%20sus%20navajas."
+          href="https://wa.me/5545687198?text=Hola!%20Me%20interesa%20información%20sobre%20sus%20navajas."
           target="_blank"
           class="contacto-whatsapp-btn reveal"
         >
@@ -2354,7 +2347,7 @@
       <div class="footer-col">
         <h4>Contacto</h4>
         <ul>
-          <li><a href="https://wa.me/1234567890" target="_blank"><i class="fa-brands fa-whatsapp" style="color:var(--gold);margin-right:6px;"></i>WhatsApp</a></li>
+          <li><a href="https://wa.me/5545687198" target="_blank"><i class="fa-brands fa-whatsapp" style="color:var(--gold);margin-right:6px;"></i>WhatsApp</a></li>
           <li><a href="mailto:pedidos@navajasluis.com">pedidos@navajasluis.com</a></li>
           <li><a href="#">Envíos internacionales</a></li>
           <li><a href="#">Política de garantía</a></li>
@@ -2423,7 +2416,7 @@
      FLOATING WHATSAPP
 ================================================= -->
 <a
-  href="https://wa.me/1234567890?text=Hola!%20Me%20interesa%20información%20sobre%20sus%20navajas."
+  href="https://wa.me/5545687198?text=Hola!%20Me%20interesa%20información%20sobre%20sus%20navajas."
   target="_blank"
   class="whatsapp-float"
   aria-label="Contáctanos por WhatsApp"
@@ -2439,7 +2432,7 @@
   // ================================================
   // CONFIGURATION — change phone number here
   // ================================================
-  const WHATSAPP_NUMBER = '1234567890'; // Replace with actual number (digits only)
+  const WHATSAPP_NUMBER = '5545687198'; // Navajas Luis — cambiar si es necesario
 
   // ================================================
   // CART STATE
